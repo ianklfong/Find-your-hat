@@ -13,7 +13,7 @@ Gaming experience improvement is still in progress...
 ![find your hat](demostration/Find-Your-Hat_Demo.gif)
 
 ## To start the app
-Use terminal to Locate the project, then type
+Use terminal to Locate the project repository, then type
 ```bash
 node main.js
 ```
