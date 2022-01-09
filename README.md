@@ -1,5 +1,5 @@
 # Find your hat
->**Find your hat** is a project by "**codecademy**". <br />
+>**Find your hat** is a project by "[**codecademy**](https://www.codecademy.com/learn)". <br />
 >This version was built in JavaScript & [terminal-kit](https://github.com/cronvel/terminal-kit)
 
 ## Instruction
