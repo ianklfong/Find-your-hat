@@ -7,14 +7,7 @@ const hole = 'O';
 const fieldCharacter = '░';
 const pathCharacter = '*';
 
-// const myField = [
-//     ['░', '░', '^'],
-//     ['O', '░', 'O'],
-//     ['*', '░', '░'],
-// ];
-// mazeSolver(myField)
-
-
+// Component - Map generator
 class Map {
     constructor(height = 7, width = 13, difficulty = 0.1) {
         this.field = this.generateField(height, width, difficulty);
@@ -38,7 +31,7 @@ class Map {
             }
         }
 
-        //assign hat 1 location
+        // assign hat 1 location
         let hatY = Math.floor(Math.random() * field.length);
         let hatX = Math.floor(Math.random() * field[0].length);
         // assign starting point
@@ -71,120 +64,7 @@ class Map {
     }
 }
 
-
-//maze solver (still in development)
-// const mazeSolver = (field) => {
-//     //Locate current coordinate
-//     let current;
-//     for (let i = 0; i < field.length; i++) {
-//         if (field[i].includes(pathCharacter)) {
-//             current = {
-//                 y: i,
-//                 x: field[i].indexOf(pathCharacter)
-//             }
-//         }
-//     }
-
-//     //check
-//     const isInBounds = () => {
-//         return (
-//             current.y >= 0 &&
-//             current.x >= 0 &&
-//             current.y < field.length &&
-//             current.x < field[0].length
-//         );
-//     }
-
-//     const goUp = () => {
-//         if (field[current.y][current.x] === '2') {
-//             field[current.y][current.x] = '3';
-//         } else if ((field[current.y][current.x] === pathCharacter || field[current.y][current.x] === fieldCharacter) && field[current.y][current.x] !== hat) {
-//             field[current.y][current.x] = '2';
-//         }
-//         current.y--;
-//         if (isInBounds() && field[current.y][current.x] !== hole) {
-//             return field[current.y][current.x]
-//         } else {
-//             current.y++;
-//             console.log('cannot go up anymore');
-//             return false
-//         }
-//     }
-//     const goDown = () => {
-//         if (field[current.y][current.x] === '2') {
-//             field[current.y][current.x] = '3'
-//         } else if ((field[current.y][current.x] === pathCharacter || field[current.y][current.x] === fieldCharacter) && field[current.y][current.x] !== hat) {
-//             field[current.y][current.x] = '2';
-//         }
-//         current.y++;
-//         if (isInBounds() && field[current.y][current.x] !== hole) { return field[current.y][current.x] } else {
-//             current.y--;
-//             console.log('cannot go down anymore');
-//             return false
-//         }
-//     }
-//     const goLeft = () => {
-//         if (field[current.y][current.x] === '2') {
-//             field[current.y][current.x] = '3'
-//         } else if ((field[current.y][current.x] === pathCharacter || field[current.y][current.x] === fieldCharacter) && field[current.y][current.x] !== hat) {
-//             field[current.y][current.x] = '2';
-//         }
-//         current.x--;
-//         if (isInBounds() && field[current.y][current.x] !== hole) { return field[current.y][current.x] } else {
-//             current.x++;
-//             console.log('cannot go left anymore');
-//             return false
-//         }
-//     }
-//     const goRight = () => {
-//         if (field[current.y][current.x] === '2') {
-//             field[current.y][current.x] = '3'
-//         } else if ((field[current.y][current.x] === pathCharacter || field[current.y][current.x] === fieldCharacter) && field[current.y][current.x] !== hat) {
-//             field[current.y][current.x] = '2';
-//         }
-//         current.x++;
-//         if (isInBounds() && field[current.y][current.x] !== hole) { return field[current.y][current.x] } else {
-//             current.x--;
-//             console.log('cannot go right anymore');
-//             return false
-//         }
-//     }
-
-//     const randomDirection = () => {
-//         let direction = Math.floor(Math.random() * 4);
-//         switch (direction) {
-//             case 0:
-//                 return goUp();
-//             case 1:
-//                 return goDown();
-//             case 2:
-//                 return goLeft();
-//             case 3:
-//                 return goRight();
-//         }
-//     }
-
-//     while (field[current.y][current.x] !== hat) {
-//         if (goUp() === false && goDown() === false && goLeft() === false && goRight() === false) {
-//             console.log('this map has no exit!')
-//             return false;
-//         } else if (field[current.y][current.x] === hat) {
-//             console.log('it works!')
-//             return true;
-//         } else { //random mouse
-//             console.log(randomDirection());
-//         }
-//     }
-// }
-
-
-
-
-
-//function coponent - locate the starting point
-
-
-
+// function component - locate the starting point
 function startingPoint(field) {
     // loop through each nested array
     for (let i = 0; i < field.length; i++) {
@@ -199,6 +79,7 @@ function startingPoint(field) {
     }
 }
 
+// Component - game 
 class Game {
     constructor(height = 7, width = 13) {
         this.field = new Map(height, width, this.difficulty)
@@ -383,3 +264,124 @@ class Game {
 //let the game begins :-)
 const newgame = new Game;
 newgame.startGame();
+
+
+
+
+
+
+
+
+
+//maze solver (still in development)
+// const mazeSolver = (field) => {
+//     //Locate current coordinate
+//     let current;
+//     for (let i = 0; i < field.length; i++) {
+//         if (field[i].includes(pathCharacter)) {
+//             current = {
+//                 y: i,
+//                 x: field[i].indexOf(pathCharacter)
+//             }
+//         }
+//     }
+
+//     //check
+//     const isInBounds = () => {
+//         return (
+//             current.y >= 0 &&
+//             current.x >= 0 &&
+//             current.y < field.length &&
+//             current.x < field[0].length
+//         );
+//     }
+
+//     const goUp = () => {
+//         if (field[current.y][current.x] === '2') {
+//             field[current.y][current.x] = '3';
+//         } else if ((field[current.y][current.x] === pathCharacter || field[current.y][current.x] === fieldCharacter) && field[current.y][current.x] !== hat) {
+//             field[current.y][current.x] = '2';
+//         }
+//         current.y--;
+//         if (isInBounds() && field[current.y][current.x] !== hole) {
+//             return field[current.y][current.x]
+//         } else {
+//             current.y++;
+//             console.log('cannot go up anymore');
+//             return false
+//         }
+//     }
+//     const goDown = () => {
+//         if (field[current.y][current.x] === '2') {
+//             field[current.y][current.x] = '3'
+//         } else if ((field[current.y][current.x] === pathCharacter || field[current.y][current.x] === fieldCharacter) && field[current.y][current.x] !== hat) {
+//             field[current.y][current.x] = '2';
+//         }
+//         current.y++;
+//         if (isInBounds() && field[current.y][current.x] !== hole) { return field[current.y][current.x] } else {
+//             current.y--;
+//             console.log('cannot go down anymore');
+//             return false
+//         }
+//     }
+//     const goLeft = () => {
+//         if (field[current.y][current.x] === '2') {
+//             field[current.y][current.x] = '3'
+//         } else if ((field[current.y][current.x] === pathCharacter || field[current.y][current.x] === fieldCharacter) && field[current.y][current.x] !== hat) {
+//             field[current.y][current.x] = '2';
+//         }
+//         current.x--;
+//         if (isInBounds() && field[current.y][current.x] !== hole) { return field[current.y][current.x] } else {
+//             current.x++;
+//             console.log('cannot go left anymore');
+//             return false
+//         }
+//     }
+//     const goRight = () => {
+//         if (field[current.y][current.x] === '2') {
+//             field[current.y][current.x] = '3'
+//         } else if ((field[current.y][current.x] === pathCharacter || field[current.y][current.x] === fieldCharacter) && field[current.y][current.x] !== hat) {
+//             field[current.y][current.x] = '2';
+//         }
+//         current.x++;
+//         if (isInBounds() && field[current.y][current.x] !== hole) { return field[current.y][current.x] } else {
+//             current.x--;
+//             console.log('cannot go right anymore');
+//             return false
+//         }
+//     }
+
+//     const randomDirection = () => {
+//         let direction = Math.floor(Math.random() * 4);
+//         switch (direction) {
+//             case 0:
+//                 return goUp();
+//             case 1:
+//                 return goDown();
+//             case 2:
+//                 return goLeft();
+//             case 3:
+//                 return goRight();
+//         }
+//     }
+
+//     while (field[current.y][current.x] !== hat) {
+//         if (goUp() === false && goDown() === false && goLeft() === false && goRight() === false) {
+//             console.log('this map has no exit!')
+//             return false;
+//         } else if (field[current.y][current.x] === hat) {
+//             console.log('it works!')
+//             return true;
+//         } else { //random mouse
+//             console.log(randomDirection());
+//         }
+//     }
+// }
+
+// const myField = [
+//     ['░', '░', '^'],
+//     ['O', '░', 'O'],
+//     ['*', '░', '░'],
+// ];
+// mazeSolver(myField)
+
